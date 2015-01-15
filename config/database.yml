@@ -48,7 +48,4 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  <<: *default
-  database: EasyBoni-Ruby_production
-  username: EasyBoni-Ruby
-  password: <%= ENV['EASYBONI-RUBY_DATABASE_PASSWORD'] %>
+     url: <%= ENV['DATABASE_URL'] %>
