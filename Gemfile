@@ -41,6 +41,7 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'debugger'
+  gem 'debugger-xml', '~> 0.3.3'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
