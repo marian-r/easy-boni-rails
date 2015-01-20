@@ -10,6 +10,7 @@ class RestaurantController < ApplicationController
     respond_to do |format|
       format.html {
         @restaurants = add_rating_to_restaurants(JSON.parse(json))
+        @restaurants = @restaurants.sort_by { |k| k['name'] }
         render
       }
       format.json { render :json => json }
