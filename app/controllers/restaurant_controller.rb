@@ -3,9 +3,14 @@ class RestaurantController < ApplicationController
   end
 
   def list
+    json = File.read(Rails.root + 'app/assets/restaurants.json')
+
     respond_to do |format|
-      format.html { render }
-      format.json { render :json => File.read(Rails.root + 'app/assets/restaurants.json') }
+      format.html {
+        @restaurants =  JSON.parse(json)
+        render
+      }
+      format.json { render :json => json }
     end
   end
 

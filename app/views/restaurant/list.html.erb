@@ -1,2 +1,16 @@
-<h1>Restaurant#list</h1>
-<p>Find me in app/views/restaurant/list.html.erb</p>
+<h1>List of restaurants</h1>
+
+<% @restaurants.each do |restaurant| %>
+<div class="panel panel-primary">
+  <div class="panel-heading">
+     <%= restaurant['name'] %>
+  </div>
+  <div class="panel-body">
+    <address class="text-muted"><%= restaurant['address'] %></address>
+
+    <div class="price-container pull-left">
+      Price: <span class="price text-primary"><%= restaurant['price'] %></span>
+    </div>
+  </div>
+</div>
+<% end %>
