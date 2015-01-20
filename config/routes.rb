@@ -3,6 +3,11 @@ Rails.application.routes.draw do
   get 'list' => 'restaurant#list'
   get 'restaurant/add_rating'
 
+  get 'login' => 'session#new'
+  post 'login' => 'session#create'
+  delete 'logout' => 'session#destroy'
+
+  get 'register' => 'users#new'
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
