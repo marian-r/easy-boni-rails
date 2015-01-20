@@ -3,10 +3,6 @@ source 'http://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
-# Use mysql as the database for Active Record
-gem 'mysql2'
-
-gem 'pg'
 
 gem 'composite_primary_keys', '~> 8.0.0'
 # Use SCSS for stylesheets
@@ -22,8 +18,6 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'jquery-rails'
 # Bootstrap
 gem 'bootstrap-sass'
-# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -39,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  # Use mysql as the database for Active Record
+  gem 'mysql2'
+
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'debugger'
   gem 'debugger-xml', '~> 0.3.3'
@@ -50,8 +47,12 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
-# For Heroku
-gem 'rails_12factor', group: :production
+# Heroku
+group :production do
+  # Use PostgreSQL on Heroku
+  gem 'pg'
+  
+  gem 'rails_12factor'
+end
 
 ruby '1.9.3'
