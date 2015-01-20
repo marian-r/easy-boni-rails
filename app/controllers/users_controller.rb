@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
     if @user.save
       log_in @user
-      redirect_to action: map_path, notice: 'Register was successful.'
+      redirect_to map_path, notice: 'Register was successful.'
     else
       render :new
     end
