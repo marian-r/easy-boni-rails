@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'map' => 'restaurant#map'
+  get 'list' => 'restaurant#list'
+  get 'restaurant/add_rating'
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
