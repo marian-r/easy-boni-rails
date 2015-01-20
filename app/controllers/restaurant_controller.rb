@@ -19,7 +19,13 @@ class RestaurantController < ApplicationController
 
   def add_rating
     rating = Rating.new(restaurant_id: params[:id], user: current_user, value: params[:value])
-    rating.save
+    begin
+      rating.save
+    rescue Exception => e
+      if e.is_a? ActiveRecord::RecordNotUnique
+        # nothing
+      end
+    end
 
     ratingVal = Rating.where(restaurant_id: params[:id]).average('value')
 
