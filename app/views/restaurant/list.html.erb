@@ -4,6 +4,10 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
      <%= restaurant['name'] %>
+
+    <div id="rating-<%= restaurant['id'] %>" class="pull-right star-rating">
+      <%= render 'rating', :restaurant_id => restaurant['id'], :rating => restaurant['rating'] %>
+    </div>
   </div>
   <div class="panel-body">
     <address class="text-muted"><%= restaurant['address'] %></address>

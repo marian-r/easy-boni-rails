@@ -1,0 +1,10 @@
+<% for i in 1..5 %>
+<a href="<%= restaurant_add_rating_path %>?id=<%= restaurant_id %>&value=<%= i %>"
+   data-remote="true" data-render="#rating-<%= restaurant_id %>" style="color: #fff">
+  <% if rating && i <= rating %>
+      <span class="star glyphicon glyphicon-star"></span>
+  <% else %>
+      <span class="star glyphicon glyphicon-star-empty"></span>
+  <% end %>
+</a>
+<% end %>

@@ -1,4 +1,6 @@
 class RestaurantController < ApplicationController
+  include RestaurantHelper
+
   def map
   end
 
@@ -7,7 +9,7 @@ class RestaurantController < ApplicationController
 
     respond_to do |format|
       format.html {
-        @restaurants =  JSON.parse(json)
+        @restaurants = add_rating_to_restaurants(JSON.parse(json))
         render
       }
       format.json { render :json => json }
@@ -15,5 +17,11 @@ class RestaurantController < ApplicationController
   end
 
   def add_rating
+    rating = Rating.new(restaurant_id: params[:id], user: current_user, value: params[:value])
+    rating.save
+
+    ratingVal = Rating.where(restaurant_id: params[:id]).average('value')
+
+    render :partial => 'rating', :locals => { :restaurant_id => params[:id], :rating => ratingVal }
   end
 end
