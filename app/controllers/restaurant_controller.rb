@@ -18,12 +18,14 @@ class RestaurantController < ApplicationController
   end
 
   def add_rating
-    rating = Rating.new(restaurant_id: params[:id], user: current_user, value: params[:value])
-    begin
-      rating.save
-    rescue Exception => e
-      if e.is_a? ActiveRecord::RecordNotUnique
-        # nothing
+    if logged_in?
+      rating = Rating.new(restaurant_id: params[:id], user: current_user, value: params[:value])
+      begin
+        rating.save
+      rescue Exception => e
+        if e.is_a? ActiveRecord::RecordNotUnique
+          # nothing
+        end
       end
     end
 
